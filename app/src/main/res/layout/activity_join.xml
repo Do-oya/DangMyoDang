@@ -19,10 +19,10 @@
         app:srcCompat="@drawable/danglogo" />
 
     <EditText
-        android:id="@+id/id"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="아이디"
+        android:hint="이름"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,7 +32,7 @@
         tools:ignore="SpeakableTextPresentCheck"></EditText>
 
     <EditText
-        android:id="@+id/pw"
+        android:id="@+id/pw1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="비밀번호"
@@ -41,38 +41,77 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.553"
+        app:layout_constraintVertical_bias="0.668"
+        tools:ignore="SpeakableTextPresentCheck"></EditText>
+
+    <EditText
+        android:id="@+id/pw2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="비밀번호 확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77"
+        tools:ignore="SpeakableTextPresentCheck"></EditText>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="285dp"
+        android:layout_height="53dp"
+        android:hint="이메일"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562"
         tools:ignore="SpeakableTextPresentCheck"></EditText>
 
     <Button
-        android:id="@+id/login"
-        android:layout_width="410dp"
-        android:layout_height="54dp"
+        android:id="@+id/email2"
+        android:layout_width="107dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="285dp"
         android:backgroundTint="@color/white"
-        android:text="로그인"
+        android:text="확인"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <Button
-        android:id="@+id/join"
+        android:id="@+id/join1"
         android:layout_width="410dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="88dp"
         android:backgroundTint="@color/white"
-        android:text="회원가입"
+        android:text="가입"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="410dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/white"
+        android:text="취소"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

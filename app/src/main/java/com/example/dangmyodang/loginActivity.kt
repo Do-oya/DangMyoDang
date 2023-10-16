@@ -12,9 +12,14 @@ class loginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val next = findViewById<Button>(R.id.next)
-        next.setOnClickListener { // 캘린더
+        val login = findViewById<Button>(R.id.login)
+        val join = findViewById<Button>(R.id.join)
+        login.setOnClickListener { // 로그인
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        join.setOnClickListener { // 회원가입
+            val intent = Intent(this, joinActivity::class.java)
             startActivity(intent)
         }
     }
