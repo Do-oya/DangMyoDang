@@ -1,10 +1,9 @@
 package com.example.dangmyodang
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.content.Intent // Intent 클래스 import 추가
-import android.widget.Button // 버튼을 사용하기 위한 import 추가
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,7 +17,7 @@ import retrofit2.http.POST
 data class UserData(
     val username: String,
     val email: String,
-    val password: String
+    val password: Int
 )
 
 data class ApiResponse(
@@ -27,6 +28,8 @@ data class ApiResponse(
 interface MyApi {
     @POST("register")
     fun registerUser(@Body userData: UserData): Call<ApiResponse>
+    @POST("login")
+    fun loginUser(@Body loginData: LoginData): Call<ApiResponse>
 }
 
 class joinActivity : AppCompatActivity() {
@@ -49,7 +52,7 @@ class joinActivity : AppCompatActivity() {
         join1.setOnClickListener {
             val username = usernameEditText.text.toString()
             val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val password = passwordEditText.text.toString().toInt()
 
             val userData = UserData(username, email, password)
 
@@ -61,10 +64,12 @@ class joinActivity : AppCompatActivity() {
                         val apiResponse = response.body()
                         if (apiResponse?.success == true) {
                             // 회원가입 성공 메시지 표시
+                            Toast.makeText(this@joinActivity, "회원가입 성공!", Toast.LENGTH_SHORT).show()
                             println("회원가입 성공!")
                         } else {
                             // 회원가입 실패 메시지 표시
-                            println("회원가입 실패!")
+                            Toast.makeText(this@joinActivity, "회원가입 실패!", Toast.LENGTH_SHORT).show()
+                            println("회원가입 실패: ${apiResponse?.message}")
                         }
                     } else {
                         // 네트워크 오류 메시지 표시
@@ -74,6 +79,7 @@ class joinActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                     // 오류 처리
+                    Toast.makeText(this@joinActivity, "오류 발생: " + t.message, Toast.LENGTH_SHORT).show()
                     println("오류 발생: " + t.message)
                 }
             })
@@ -81,7 +87,7 @@ class joinActivity : AppCompatActivity() {
 
         val cancel = findViewById<Button>(R.id.cancel)
         cancel.setOnClickListener {
-            val intent = Intent(this, loginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

@@ -6,13 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".mapActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="203dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="280dp"
-        android:text="카카오맵 API 추가 예정"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.naver.maps.map.MapFragment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
