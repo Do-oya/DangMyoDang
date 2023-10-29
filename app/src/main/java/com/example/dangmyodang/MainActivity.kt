@@ -3,9 +3,8 @@ package com.example.dangmyodang
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,26 +21,38 @@ class MainActivity : AppCompatActivity() {
         calendar.setOnClickListener { // 캘린더
             val intent = Intent(this, calendarActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         map.setOnClickListener { // 맵
             val intent = Intent(this, mapActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         training.setOnClickListener { // 훈련
             val intent = Intent(this, treiningActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         a.setOnClickListener { // 입양
             val intent = Intent(this, aActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         community.setOnClickListener { // 커뮤니티
             val intent = Intent(this, communityActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         running.setOnClickListener { // 산책기록
             val intent = Intent(this, runningActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
+        }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (isFinishing) {
+            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
         }
     }
 }

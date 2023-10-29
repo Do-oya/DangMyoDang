@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,16 +16,21 @@ data class LoginData(
     val password: String
 )
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val join = findViewById<Button>(R.id.join)
+        join.setOnClickListener { // 회원가입
+            val intent = Intent(this, joinActivity::class.java)
+            startActivity(intent)
+        }
 
         val usernameEditText = findViewById<EditText>(R.id.id)
         val passwordEditText = findViewById<EditText>(R.id.pw)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000") // 실제 서버 URL로 변경
+            .baseUrl("http://18.191.198.120:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
@@ -47,10 +51,16 @@ class LoginActivity : AppCompatActivity() {
                         val apiResponse = response.body()
                         if (apiResponse?.success == true) {
                             // 로그인 성공 메시지 표시
-                            Toast.makeText(this@LoginActivity, "로그인 성공!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "로그인 성공!", Toast.LENGTH_LONG).show()
                             // 로그인 성공 시 다음 화면으로 이동
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
+                            fun someFunction() {
+                                finish()
+
+                                // 이 화면은, 오른쪽에서 왼쪽으로 슬라이딩 하면서 사라집니다.
+                                overridePendingTransition(R.anim.none, R.anim.horizon_exit)
+                            }
                         } else {
                             // 로그인 실패 메시지 표시
                             Toast.makeText(this@LoginActivity, "로그인 실패: ${apiResponse?.message}", Toast.LENGTH_SHORT).show()
@@ -66,6 +76,13 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "오류 발생: " + t.message, Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (isFinishing) {
+            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
         }
     }
 }

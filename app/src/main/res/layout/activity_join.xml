@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECF3F8"
-    tools:context=".loginActivity">
+    android:backgroundTint="#F6F0F0"
+    tools:context=".joinActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,10 +19,17 @@
         app:srcCompat="@drawable/danglogo" />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="이름"
+        android:id="@+id/userID"
+        android:inputType="text"
+        android:layout_width="278dp"
+        android:layout_height="53dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/idicon"
+        android:drawablePadding="3dp"
+        android:hint="ID"
+        android:paddingStart="8dp"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,9 +40,15 @@
 
     <EditText
         android:id="@+id/pw1"
+        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="비밀번호"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:hint="PASSWORD"
+        android:inputType="text"
+        android:drawableLeft="@drawable/pwicon"
+        android:drawablePadding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,9 +59,15 @@
 
     <EditText
         android:id="@+id/pw2"
+        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="비밀번호 확인"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:hint="PASSWORD CHECK"
+        android:inputType="text"
+        android:drawableLeft="@drawable/pwicon"
+        android:drawablePadding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -58,10 +77,15 @@
         tools:ignore="SpeakableTextPresentCheck"></EditText>
 
     <EditText
-        android:id="@+id/email"
-        android:layout_width="285dp"
-        android:layout_height="53dp"
-        android:hint="이메일"
+        android:id="@+id/userName"
+        android:layout_width="410dp"
+        android:layout_height="51dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:hint="NAME"
+        android:paddingStart="8dp"
+        android:drawablePadding="3dp"
+        android:drawableLeft="@drawable/nameicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -71,42 +95,31 @@
         tools:ignore="SpeakableTextPresentCheck"></EditText>
 
     <Button
-        android:id="@+id/email2"
+        android:id="@+id/check"
         android:layout_width="107dp"
         android:layout_height="56dp"
         android:layout_marginStart="285dp"
-        android:backgroundTint="@color/white"
-        android:text="확인"
-        android:textColor="@color/black"
+        android:background="@drawable/bg_gradient"
+        android:fontFamily="@font/korean"
+        android:text="OK"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/userName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <Button
         android:id="@+id/join1"
         android:layout_width="410dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="88dp"
-        android:backgroundTint="@color/white"
-        android:text="가입"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/cancel"
-        android:layout_width="410dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/white"
-        android:text="취소"
-        android:textColor="@color/black"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/bg_gradient"
+        android:fontFamily="@font/korean"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

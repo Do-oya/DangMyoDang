@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECF3F8"
-    tools:context=".loginActivity">
+    android:backgroundTint="#F6F0F0"
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,7 +22,13 @@
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="아이디"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/idicon"
+        android:drawablePadding="3dp"
+        android:hint="ID"
+        android:paddingStart="8dp"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,44 +41,54 @@
         android:id="@+id/pw"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="비밀번호"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/pwicon"
+        android:drawablePadding="3dp"
+        android:hint="PASSWORD"
+        android:paddingStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.553"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:maxLines="1"
         tools:ignore="SpeakableTextPresentCheck"></EditText>
 
     <Button
         android:id="@+id/login"
         android:layout_width="410dp"
         android:layout_height="54dp"
-        android:backgroundTint="@color/white"
-        android:text="로그인"
-        android:textColor="@color/black"
+        android:background="@drawable/bg_gradient"
+        android:fontFamily="@font/korean"
+        android:text="LOGIN"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.723" />
 
     <Button
         android:id="@+id/join"
         android:layout_width="410dp"
         android:layout_height="54dp"
-        android:backgroundTint="@color/white"
-        android:text="회원가입"
-        android:textColor="@color/black"
+        android:background="@drawable/bg_gradient"
+        android:fontFamily="@font/korean"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.83" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
