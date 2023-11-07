@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,15 +27,31 @@
         android:theme="@style/Theme.DangMyoDang"
         tools:targetApi="31">
         <activity
-            android:name=".mapMainActivity"
+            android:name=".medicActivity"
             android:exported="false" />
         <activity
-            android:name=".mapActivity"
+            android:name=".vaccinationActivity"
             android:exported="false" />
+        <activity
+            android:name=".diseaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".foodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".careActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="true"
+            tools:ignore="MissingClass" />
 
         <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="rvm0je3dc7" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB6Tjyta90vgEI-Fy1-7JJELfLV6i5aqnE" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".joinActivity"

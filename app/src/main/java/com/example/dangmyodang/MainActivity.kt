@@ -16,6 +16,7 @@ class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
         val a = findViewById<ImageButton>(R.id.a)
         val community = findViewById<ImageButton>(R.id.community)
         val running = findViewById<ImageButton>(R.id.running)
+        val care = findViewById<ImageButton>(R.id.care)
 
         // 버튼 클릭 리스너를 설정
         calendar.setOnClickListener { // 캘린더
@@ -24,7 +25,7 @@ class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
             overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
         map.setOnClickListener { // 맵
-            val intent = Intent(this, mapActivity::class.java)
+            val intent = Intent(this, MapActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
@@ -45,6 +46,11 @@ class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
         }
         running.setOnClickListener { // 산책기록
             val intent = Intent(this, runningActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
+        }
+        care.setOnClickListener { // 건강정보
+            val intent = Intent(this, careActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }

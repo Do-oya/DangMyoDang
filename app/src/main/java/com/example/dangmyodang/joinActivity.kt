@@ -1,5 +1,6 @@
 package com.example.dangmyodang
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -46,7 +47,7 @@ class joinActivity : BaseActivity(TransitionMode.VERTICAL) {
 //        val checkButton = findViewById<Button>(R.id.check)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://18.191.198.120:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-18-226-34-113.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
@@ -112,6 +113,8 @@ class joinActivity : BaseActivity(TransitionMode.VERTICAL) {
                             if (apiResponse?.success == true) {
                                 // 회원가입 성공 메시지 표시
                                 Toast.makeText(this@joinActivity, "회원가입 성공!", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@joinActivity, LoginActivity::class.java)
+                                startActivity(intent)
                                 println("회원가입 성공!")
                             } else {
                                 // 회원가입 실패 메시지 표시

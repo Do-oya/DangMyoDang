@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
         val passwordEditText = findViewById<EditText>(R.id.pw)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://18.191.198.120:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-18-226-34-113.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
