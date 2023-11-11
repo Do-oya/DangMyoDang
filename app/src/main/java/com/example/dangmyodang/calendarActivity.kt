@@ -7,11 +7,10 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
-class calendarActivity : AppCompatActivity() {
+class calendarActivity : BaseActivity(TransitionMode.HORIZON) {
 
     var fname: String = "" // 파일 이름 초기화
     var str: String? = null
@@ -140,7 +139,7 @@ class calendarActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         if (isFinishing) {
-            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
     }
 }

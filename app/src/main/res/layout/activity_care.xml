@@ -7,70 +7,134 @@
     android:backgroundTint="#F6F0F0"
     tools:context=".careActivity">
 
-    <Button
-        android:id="@+id/food"
-        android:layout_width="375dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_gradientt"
-        android:fontFamily="@font/font1"
-        android:text="반려견이 먹으면 안되는 음식물"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="21sp"
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="409dp"
+        android:layout_height="538dp"
+        android:layout_marginTop="104dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
-
-    <Button
-        android:id="@+id/medic"
-        android:layout_width="375dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="520dp"
-        android:background="@drawable/bg_gradientt"
-        android:fontFamily="@font/font1"
-        android:text="반려견 응급처치"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="21sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/aaaaaa" />
 
     <Button
         android:id="@+id/disease"
-        android:layout_width="375dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="184dp"
-        android:background="@drawable/bg_gradientt"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
         android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
         android:text="반려견의 질병"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/vaccination"
-        android:layout_width="375dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="344dp"
-        android:background="@drawable/bg_gradientt"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="396dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
         android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
         android:text="애견 예방접종"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:srcCompat="@drawable/bal" />
+
+    <Button
+        android:id="@+id/food"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="184dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="반려견이 먹으면 안되는 음식물"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/medic"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="504dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="반려견 응급처치"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/font1"
+        android:text="반려견 건강정보"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigationView"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/menu_click_color"
+        app:itemTextColor="@drawable/menu_click_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navi_menu"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

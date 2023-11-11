@@ -2,7 +2,7 @@ package com.example.dangmyodang
 
 import android.os.Bundle
 
-class foodActivity : BaseActivity(TransitionMode.VERTICAL) {
+class foodActivity : BaseActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food)
@@ -11,7 +11,7 @@ class foodActivity : BaseActivity(TransitionMode.VERTICAL) {
     override fun onBackPressed() {
         super.onBackPressed()
         if (isFinishing) {
-            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
     }
 }

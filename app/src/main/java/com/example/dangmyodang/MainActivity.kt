@@ -2,12 +2,25 @@ package com.example.dangmyodang
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
+class MainActivity : BaseActivity(TransitionMode.HORIZON) {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var textView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        findViewById<TextView>(R.id.textView5).isSelected = true
+        textView = findViewById(R.id.textView)
+        val intent = intent
+        val username = intent.getStringExtra("userName")
+        textView.text = "$username 님"
 
         // 버튼을 찾아옴
         val calendar = findViewById<ImageButton>(R.id.calendar)
@@ -18,47 +31,73 @@ class MainActivity : BaseActivity(TransitionMode.VERTICAL) {
         val running = findViewById<ImageButton>(R.id.running)
         val care = findViewById<ImageButton>(R.id.care)
 
-        // 버튼 클릭 리스너를 설정
-        calendar.setOnClickListener { // 캘린더
-            val intent = Intent(this, calendarActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
+        // BottomNavigationView 초기화
+        bottomNavigationView = findViewById(R.id.navigationView)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.homeFragment -> {
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: Home Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.careFragment -> {
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: care Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, showActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
-        map.setOnClickListener { // 맵
+
+        // 기존 버튼 클릭 리스너를 설정
+        calendar.setOnClickListener {
+            val intent = Intent(this, calendarActivity::class.java)
+            val userName = "댕묘댕"
+            intent.putExtra("userName", userName)
+            startActivity(intent)
+        }
+        map.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
-        training.setOnClickListener { // 훈련
+        training.setOnClickListener {
             val intent = Intent(this, treiningActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
-        a.setOnClickListener { // 입양
+        a.setOnClickListener {
             val intent = Intent(this, aActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
-        community.setOnClickListener { // 커뮤니티
+        community.setOnClickListener {
             val intent = Intent(this, communityActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
-        running.setOnClickListener { // 산책기록
+        running.setOnClickListener {
             val intent = Intent(this, runningActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
-        care.setOnClickListener { // 건강정보
+        care.setOnClickListener {
             val intent = Intent(this, careActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.vertical_enter, R.anim.none)
         }
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         if (isFinishing) {
-            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFrameLayout, fragment)
+            .commit()
     }
 }

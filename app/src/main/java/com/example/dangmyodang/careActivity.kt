@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 
-class careActivity : BaseActivity(TransitionMode.VERTICAL) {
+class careActivity : BaseActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_care)
@@ -38,7 +38,7 @@ class careActivity : BaseActivity(TransitionMode.VERTICAL) {
     override fun onBackPressed() {
         super.onBackPressed()
         if (isFinishing) {
-            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
     }
 }

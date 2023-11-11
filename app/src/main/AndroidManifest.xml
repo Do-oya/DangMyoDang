@@ -13,8 +13,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -26,6 +24,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DangMyoDang"
         tools:targetApi="31">
+        <activity
+            android:name=".showActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NaviActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dog_pushActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dog_bingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dog_comoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dog_comActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dog_handActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dog_hand"
+            android:theme="@style/Theme.DangMyoDang" />
+        <activity
+            android:name=".dog_trActivity"
+            android:exported="false" />
         <activity
             android:name=".medicActivity"
             android:exported="false" />

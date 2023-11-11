@@ -12,16 +12,15 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="408dp"
-        android:layout_height="337dp"
+        android:layout_width="413dp"
+        android:layout_height="302dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/calendarground" />
+        app:layout_constraintVertical_bias="0.895"
+        app:srcCompat="@drawable/sss" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -41,7 +40,7 @@
         android:layout_width="328dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/font1"
         android:gravity="center"
@@ -115,7 +114,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/bg_gradientt"
         android:fontFamily="@font/font1"
         android:text="저장"
         android:textColor="@color/white"
@@ -131,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/bg_gradientt"
         android:fontFamily="@font/font1"
         android:text="수정"
         android:textColor="@color/white"
@@ -145,13 +144,33 @@
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/bg_gradientt"
         android:fontFamily="@font/font1"
         android:text="삭제"
         android:textColor="@color/white"
         android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/cha_Btn"
         app:layout_constraintEnd_toEndOf="@+id/save_Btn"></Button>
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigationView"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/menu_click_color"
+        app:itemTextColor="@drawable/menu_click_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navi_menu"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

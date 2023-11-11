@@ -16,7 +16,7 @@ data class LoginData(
     val password: String
 )
 
-class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
+class LoginActivity : BaseActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
         val passwordEditText = findViewById<EditText>(R.id.pw)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-18-226-34-113.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-3-143-218-248.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
@@ -50,10 +50,10 @@ class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
                     if (response.isSuccessful) {
                         val apiResponse = response.body()
                         if (apiResponse?.success == true) {
-                            // 로그인 성공 메시지 표시
-                            Toast.makeText(this@LoginActivity, "로그인 성공!", Toast.LENGTH_LONG).show()
                             // 로그인 성공 시 다음 화면으로 이동
+                            val userName = "댕묘댕"
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            intent.putExtra("userName", userName)  // 여기서 userName은 사용자 이름 변수
                             startActivity(intent)
                             fun someFunction() {
                                 finish()
@@ -63,7 +63,7 @@ class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
                             }
                         } else {
                             // 로그인 실패 메시지 표시
-                            Toast.makeText(this@LoginActivity, "로그인 실패: ${apiResponse?.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "로그인 실패: 입력된 정보를 확인하세요", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         // 네트워크 오류 메시지 표시
@@ -82,7 +82,7 @@ class LoginActivity : BaseActivity(TransitionMode.VERTICAL) {
     override fun onBackPressed() {
         super.onBackPressed()
         if (isFinishing) {
-            overridePendingTransition(R.anim.none, R.anim.vertical_exit)
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
     }
 }
