@@ -20,16 +20,17 @@
 
     <EditText
         android:id="@+id/userID"
-        android:inputType="text"
-        android:layout_width="278dp"
+        android:layout_width="288dp"
         android:layout_height="53dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/idicon"
         android:drawablePadding="3dp"
         android:hint="ID"
+        android:inputType="text"
         android:paddingStart="8dp"
         android:textAlignment="textStart"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,15 +41,16 @@
 
     <EditText
         android:id="@+id/pw1"
-        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/white"
-        android:hint="PASSWORD"
-        android:inputType="text"
         android:drawableLeft="@drawable/pwicon"
         android:drawablePadding="3dp"
+        android:hint="PASSWORD"
+        android:inputType="text"
+        android:paddingStart="8dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -59,15 +61,16 @@
 
     <EditText
         android:id="@+id/pw2"
-        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/white"
-        android:hint="PASSWORD CHECK"
-        android:inputType="text"
         android:drawableLeft="@drawable/pwicon"
         android:drawablePadding="3dp"
+        android:hint="PASSWORD CHECK"
+        android:inputType="text"
+        android:paddingStart="8dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,10 +85,11 @@
         android:layout_height="51dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/nameicon"
+        android:drawablePadding="3dp"
         android:hint="NAME"
         android:paddingStart="8dp"
-        android:drawablePadding="3dp"
-        android:drawableLeft="@drawable/nameicon"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -96,7 +100,7 @@
 
     <Button
         android:id="@+id/check"
-        android:layout_width="107dp"
+        android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginStart="285dp"
         android:background="@drawable/bd_gradienttt"
@@ -107,14 +111,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="@+id/userName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.46" />
 
     <Button
         android:id="@+id/join1"
-        android:layout_width="410dp"
+        android:layout_width="380dp"
         android:layout_height="54dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/bd_gradienttt"
@@ -125,7 +129,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent" />
 
 

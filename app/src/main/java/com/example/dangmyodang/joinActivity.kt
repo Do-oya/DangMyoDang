@@ -47,7 +47,7 @@ class joinActivity : BaseActivity(TransitionMode.HORIZON) {
 //        val checkButton = findViewById<Button>(R.id.check)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-18-226-34-113.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-13-58-181-174.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 

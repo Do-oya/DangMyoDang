@@ -7,11 +7,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.NOTIFICATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DangMyoDang"
         tools:targetApi="31">
+        <activity
+            android:name=".running_hs_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".settingActivity"
+            android:exported="false" />
         <activity
             android:name=".showActivity"
             android:exported="false" />
@@ -76,6 +83,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="rvm0je3dc7" />
 
         <activity
             android:name=".joinActivity"
@@ -90,7 +100,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".runningActivity"
+            android:name=".RunningActivity"
             android:exported="false" />
         <activity
             android:name=".communityActivity"

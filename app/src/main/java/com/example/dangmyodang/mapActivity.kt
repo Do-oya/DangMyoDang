@@ -1,10 +1,15 @@
 package com.example.dangmyodang
 
+import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,6 +26,9 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
     private lateinit var playgroundButton: Button
     private lateinit var equipmentButton: Button
     private lateinit var animalInfo: AnimalInfo
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,47 +52,74 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
         } catch (e: Exception) {
             Log.e("MapActivity", "Error loading JSON file: ${e.message}")
         }
+
+        // FusedLocationProviderClient 초기화
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
 
-        val myLocation = floatArrayOf(37.5652561900958f, 126.97715862212084f)
-        val allowedRadius = 3000f // 원하는 반경 (미터)
+        if (checkLocationPermission()) {
+            // 권한이 허용되었을 때 현재 위치를 가져와 지도 이동
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val currentLocation = LatLng(it.latitude, it.longitude)
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+                }
+            }
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(myLocation[0].toDouble(), myLocation[1].toDouble()), 15F))
+            googleMap.setOnMarkerClickListener(this)
 
-        googleMap.setOnMarkerClickListener(this)
+            // 초기에는 모든 시설을 표시
+            showFacilitiesOfType("all")
+        }
+    }
 
-        // 초기에는 모든 시설을 표시
-        showFacilitiesOfType("all")
+    private fun checkLocationPermission(): Boolean {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            // 권한이 없으면 권한 요청
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return false
+        }
+        return true
     }
 
     private fun showFacilitiesOfType(type: String) {
-        // 해당 버튼에 맞는 시설만 마커로 표시
-        googleMap.clear() // 이전에 추가된 마커들을 지우고 새로운 마커를 추가합니다.
+        googleMap.clear()
 
-        val myLocation = floatArrayOf(37.5652561900958f, 126.97715862212084f)
-        val allowedRadius = 3000f // 원하는 반경 (미터)
+        if (checkLocationPermission()) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val myLocation = LatLng(it.latitude, it.longitude)
+                    val allowedRadius = 3000f // 원하는 반경 (미터)
 
-        // 동물 시설들의 위치를 지도에 표시
-        animalInfo.animal.forEach {
-            val animalLocation = LatLng(it.latitude, it.longitude)
-            val results = FloatArray(1)
+                    // 동물 시설들의 위치를 지도에 표시
+                    animalInfo.animal.forEach {
+                        val animalLocation = LatLng(it.latitude, it.longitude)
+                        val results = FloatArray(1)
 
-            Location.distanceBetween(
-                myLocation[0].toDouble(),
-                myLocation[1].toDouble(),
-                it.latitude,
-                it.longitude,
-                results
-            )
+                        Location.distanceBetween(
+                            myLocation.latitude,
+                            myLocation.longitude,
+                            it.latitude,
+                            it.longitude,
+                            results
+                        )
 
-            val distance = results[0]
+                        val distance = results[0]
 
-            if (distance <= allowedRadius && (type == "all" || isMatchingType(type, it.facilityType))) {
-                // type이 "all"이거나, type에 맞는 경우에만 마커 추가
-                addMarker(it, animalLocation)
+                        if (distance <= allowedRadius && (type == "all" || isMatchingType(type, it.facilityType))) {
+                            addMarker(it, animalLocation)
+                        }
+                    }
+                }
             }
         }
     }
@@ -92,7 +127,7 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
     private fun isMatchingType(type: String, facilityType: String): Boolean {
         return when (type) {
             "medical" -> facilityType == "동물약국" || facilityType == "동물병원" || facilityType == "일반동물병원"
-            "playground" -> facilityType == "애견카페" || facilityType == "애견 동반 펜션"
+            "playground" -> facilityType == "애견카페" || facilityType == "애견 동반 펜션" || facilityType == "공원" || facilityType == "미술관" || facilityType == "박물관"
             "equipment" -> facilityType == "강아지용품" || facilityType == "반려동물용품"
             else -> false
         }
@@ -103,6 +138,7 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
             .position(location)
             .title(animal.name)
 
+        // 빨간색 마커 의료시설
         if (animal.facilityType == "동물약국") {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
         }
@@ -113,13 +149,24 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
         }
 
+        // 노랑색 마커 놀이시설
         if (animal.facilityType == "애견카페") {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
         }
         if (animal.facilityType == "애견 동반 펜션") {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
         }
+        if (animal.facilityType == "공원") {
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        }
+        if (animal.facilityType == "박물관") {
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        }
+        if (animal.facilityType == "미술관") {
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        }
 
+        // 파란색 마커 용품시설
         if (animal.facilityType == "강아지용품") {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
         }

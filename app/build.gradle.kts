@@ -62,11 +62,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation("com.google.code.gson:gson:2.8.8")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation("com.google.android.gms:play-services-maps:17.0.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
     implementation(files("libs\\com.skt.Tmap_1.75.jar"))
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-maps:17.0.0")
     implementation("com.google.maps.android:android-maps-utils:0.5+")
     implementation("com.google.android.libraries.places:places:3.1.0")
 

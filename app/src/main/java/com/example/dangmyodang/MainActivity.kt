@@ -79,7 +79,7 @@ class MainActivity : BaseActivity(TransitionMode.HORIZON) {
             startActivity(intent)
         }
         running.setOnClickListener {
-            val intent = Intent(this, runningActivity::class.java)
+            val intent = Intent(this, RunningActivity::class.java)
             startActivity(intent)
         }
         care.setOnClickListener {

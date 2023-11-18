@@ -11,9 +11,8 @@
         android:id="@+id/imageView13"
         android:layout_width="409dp"
         android:layout_height="538dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="104dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/aaaaaa" />
@@ -42,10 +41,12 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/young"
@@ -60,10 +61,12 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068" />
 
     <TextView
         android:id="@+id/textView28"
@@ -81,13 +84,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/contentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/navigationView"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="73dp" />
+<!--    <FrameLayout-->
+<!--        android:id="@+id/contentContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_above="@+id/navigationView"-->
+<!--        tools:layout_editor_absoluteX="-3dp"-->
+<!--        tools:layout_editor_absoluteY="73dp" />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
