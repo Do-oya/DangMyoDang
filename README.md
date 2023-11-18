@@ -66,7 +66,9 @@
 * 일정기록에 기록된 알람 확인 버튼
 ---
 #### 2. 일정기록
-![일정기록](https://github.com/1924023/parkjeonghyun/assets/143380674/f02db5c9-731f-4d81-a12c-a2beb0829002)
+![일정기록](https://github.com/1924023/parkjeonghyun/assets/143380674/f02db5c9-731f-4d81-a12c-a2beb0829002) ![일정기록1](https://github.com/1924023/parkjeonghyun/assets/143380674/37013697-c590-4487-bc35-e3526c9d6335)
+* 캘린더에 일정을 기록
+* 일정에 맞게 알람기능
 
 ---
 #### 3. 동반시설 탐색
