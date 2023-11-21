@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="test">
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+        <item>1월</item>
+    </string-array>
+</resources>
