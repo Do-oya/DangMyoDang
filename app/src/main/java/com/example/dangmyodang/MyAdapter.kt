@@ -6,69 +6,50 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.api_test.AdaptionList
-import org.json.JSONException
-import org.json.JSONObject
+import com.example.dangmyodang.AdaptionList
 
-class MyAdapter(private val context: Context, private val resource: Int, private val isRecyclerView: Boolean = false, private val dataList: List<Any>) :
-    ArrayAdapter<Any>(context, resource, dataList) {
+class MyAdapter(context: Context, resource: Int, objects: List<AdaptionList?>) :
+    ArrayAdapter<AdaptionList>(context, resource, objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        if (isRecyclerView) {
-            val viewHolder: ViewHolder
-            val view: View
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
 
-            if (convertView == null) {
-                view = LayoutInflater.from(context).inflate(resource, parent, false)
-                viewHolder = ViewHolder(view)
-                view.tag = viewHolder
-            } else {
-                view = convertView
-                viewHolder = view.tag as ViewHolder
-            }
+        val item = getItem(position)
 
-            val item = dataList[position] as AdaptionList
+        // item 레이아웃 정의
+        val itemLayout = LinearLayout(context)
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
 
-            viewHolder.happenPalce.text = item.happenPlace
-            viewHolder.kindCd.text = item.kindCd
-            viewHolder.age.text = item.age
-            viewHolder.weight.text = item.weight
-            viewHolder.careAddr.text = item.careAddr
+        // 여백 조절
+        layoutParams.setMargins(10, 10, 10, 10) // 여백 값은 상황에 따라 조절해주세요.
 
-            Glide.with(context)
-                .load(item.popfile)
-                .into(viewHolder.imageView2)
+        // item 레이아웃에 여백 적용
+        itemLayout.layoutParams = layoutParams
 
-            return view
-        } else {
-            val view = convertView ?: LayoutInflater.from(context).inflate(resource, parent, false)
-            val item = getItem(position) as JSONObject
+        val happenPalce = view.findViewById<TextView>(R.id.happenPalce)
+        val kindCd = view.findViewById<TextView>(R.id.kindCd)
+        val age = view.findViewById<TextView>(R.id.age)
+        val weight = view.findViewById<TextView>(R.id.weight)
+        //val specialmark = view.findViewById<TextView>(R.id.specialmark)
+        val careAddr = view.findViewById<TextView>(R.id.careAddr)
+        val imageView2 = view.findViewById<ImageView>(R.id.imageView2)
 
-            val holder = ViewHolder(view)
-            holder.bindData(item)
+        happenPalce.text = item?.happenPlace
+        kindCd.text = item?.kindCd
+        age.text = item?.age
+        weight.text = item?.weight
+        //specialmark.text = item?.specialmark
+        careAddr.text = item?.careAddr
+        Glide.with(context)
+            .load(item?.popfile)
+            .into(imageView2)
 
-            return view
-        }
-    }
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val happenPalce: TextView = itemView.findViewById(R.id.happenPalce)
-        val kindCd: TextView = itemView.findViewById(R.id.kindCd)
-        val age: TextView = itemView.findViewById(R.id.age)
-        val weight: TextView = itemView.findViewById(R.id.weight)
-        val careAddr: TextView = itemView.findViewById(R.id.careAddr)
-        val imageView2: ImageView = itemView.findViewById(R.id.imageView2)
-
-        fun bindData(item: JSONObject) {
-            try {
-                val text = item.getString("key")
-                happenPalce.text = text
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        }
+        return view
     }
 }

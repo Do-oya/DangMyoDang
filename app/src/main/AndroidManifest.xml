@@ -106,7 +106,7 @@
             android:name=".communityActivity"
             android:exported="false" />
         <activity
-            android:name=".aActivity"
+            android:name=".spinnerActivity"
             android:exported="false" />
         <activity
             android:name=".treiningActivity"

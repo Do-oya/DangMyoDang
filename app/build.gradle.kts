@@ -5,9 +5,9 @@ plugins {
 
 android {
     namespace = "com.example.dangmyodang"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
-        minSdk = 23
+        minSdk = 24
     }
 
     viewBinding {

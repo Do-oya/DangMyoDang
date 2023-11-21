@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.dangmyodang.spinnerActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity(TransitionMode.HORIZON) {
@@ -71,7 +72,7 @@ class MainActivity : BaseActivity(TransitionMode.HORIZON) {
             startActivity(intent)
         }
         a.setOnClickListener {
-            val intent = Intent(this, aActivity::class.java)
+            val intent = Intent(this, spinnerActivity::class.java)
             startActivity(intent)
         }
         community.setOnClickListener {

@@ -28,6 +28,7 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
     private lateinit var animalInfo: AnimalInfo
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+
     private val LOCATION_PERMISSION_REQUEST_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,10 +62,13 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
         googleMap = map
 
         if (checkLocationPermission()) {
-            // 권한이 허용되었을 때 현재 위치를 가져와 지도 이동
+            googleMap.isMyLocationEnabled = true // 현재 위치 활성화
+
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
                     val currentLocation = LatLng(it.latitude, it.longitude)
+
+                    // 내 위치를 기본 파란색 동그라미로 표시
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
                 }
             }
@@ -125,58 +129,69 @@ class MapActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback, Go
     }
 
     private fun isMatchingType(type: String, facilityType: String): Boolean {
+        val types = facilityType.split(",").map { it.trim() }
+
         return when (type) {
-            "medical" -> facilityType == "동물약국" || facilityType == "동물병원" || facilityType == "일반동물병원"
-            "playground" -> facilityType == "애견카페" || facilityType == "애견 동반 펜션" || facilityType == "공원" || facilityType == "미술관" || facilityType == "박물관"
-            "equipment" -> facilityType == "강아지용품" || facilityType == "반려동물용품"
+            "medical" -> types.any {
+                it == "동물약국" || it == "동물병원" || it == "일반동물병원" ||
+                        it == "강아지미용" || it == "축산동물병원" || it == "강아지미용,예약제" || it == "예약제"
+            }
+            "playground" -> types.any {
+                it == "애견카페" || it == "애견 동반 펜션" || it == "공원" ||
+                        it == "미술관" || it == "박물관" || it == "애견카페,용품" || it == "문예회관"
+            }
+            "equipment" -> types.any {
+                it == "강아지용품" || it == "반려동물용품" || it == "애견카페,용품" || it == "용품"
+            }
             else -> false
         }
     }
+
 
     private fun addMarker(animal: AnimalInfo.Animal, location: LatLng) {
         val markerOptions = MarkerOptions()
             .position(location)
             .title(animal.name)
 
-        // 빨간색 마커 의료시설
-        if (animal.facilityType == "동물약국") {
+        // 초록색 마커 - 의료시설
+        if (isMedicalFacility(animal.facilityType)) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
         }
-        if (animal.facilityType == "일반동물병원") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-        }
-        if (animal.facilityType == "동물병원") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-        }
-
-        // 노랑색 마커 놀이시설
-        if (animal.facilityType == "애견카페") {
+        // 노랑색 마커 - 놀이시설
+        else if (isPlayground(animal.facilityType)) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
         }
-        if (animal.facilityType == "애견 동반 펜션") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-        }
-        if (animal.facilityType == "공원") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-        }
-        if (animal.facilityType == "박물관") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-        }
-        if (animal.facilityType == "미술관") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-        }
-
-        // 파란색 마커 용품시설
-        if (animal.facilityType == "강아지용품") {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-        }
-        if (animal.facilityType == "반려동물용품") {
+        // 파란색 마커 - 용품시설
+        else if (isEquipmentFacility(animal.facilityType)) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
         }
 
         val marker = googleMap.addMarker(markerOptions)
         marker?.tag = animal // 마커에 정보를 태그로 저장
     }
+
+    private fun isMedicalFacility(facilityType: String): Boolean {
+        val types = listOf("동물약국", "일반동물병원", "동물병원", "강아지미용", "축산동물병원", "강아지미용,예약제", "예약제")
+        return checkFacilityType(facilityType, types)
+    }
+
+    private fun isPlayground(facilityType: String): Boolean {
+        val types = listOf("애견카페", "애견 동반 펜션", "공원", "박물관", "미술관", "애견카페,용품", "문예회관")
+        return checkFacilityType(facilityType, types)
+    }
+
+    private fun isEquipmentFacility(facilityType: String): Boolean {
+        val types = listOf("강아지용품", "반려동물용품", "용품")
+        return checkFacilityType(facilityType, types)
+    }
+
+    private fun checkFacilityType(facilityType: String, validTypes: List<String>): Boolean {
+        return validTypes.any { it in facilityType.split(",") }
+    }
+
+
+
+
 
     override fun onMarkerClick(marker: com.google.android.gms.maps.model.Marker): Boolean {
         // 마커를 클릭했을 때 실행되는 로직

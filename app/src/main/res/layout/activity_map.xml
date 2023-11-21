@@ -46,7 +46,7 @@
         android:layout_marginBottom="57dp"
         android:background="@drawable/bg_gradientt"
         android:fontFamily="@font/font1"
-        android:text="강아지 놀이시설"
+        android:text="강아지 동반시설"
         android:textColor="#FCF6F5" />
 
     <Button
