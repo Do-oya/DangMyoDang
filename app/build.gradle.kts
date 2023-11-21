@@ -69,6 +69,7 @@ dependencies {
     implementation("com.google.maps.android:android-maps-utils:0.5+")
     implementation("com.google.android.libraries.places:places:3.1.0")
 
+
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("com.naver.maps:map-sdk:3.17.0")
 

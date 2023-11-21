@@ -21,7 +21,8 @@ data class UserData(
 
 data class ApiResponse(
     val success: Boolean,
-    val message: String
+    val message: String,
+    val exerciseRecords: List<ExerciseRecord>
 )
 data class UsernameData(
     val username: String
@@ -47,7 +48,7 @@ class joinActivity : BaseActivity(TransitionMode.HORIZON) {
 //        val checkButton = findViewById<Button>(R.id.check)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-13-58-181-174.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-18-222-163-112.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 

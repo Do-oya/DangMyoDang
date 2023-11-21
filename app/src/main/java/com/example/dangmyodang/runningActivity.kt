@@ -17,26 +17,41 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
+import com.squareup.moshi.Json
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 import java.text.SimpleDateFormat
 import java.util.*
 
 interface ExerciseApiService {
     @POST("/saveExerciseRecord")
     fun saveExerciseRecord(@Body record: ExerciseRecord): Call<Void>
+
+    @GET("/getExerciseRecords")
+    fun getExerciseRecordsByDate(
+        @Query("userId") userId: Int,
+        @Query("date") date: String
+    ): Call<ExerciseResponse>
 }
+
 
 data class ExerciseRecord(
     val userId: Int,
-    val startTime: String,
-    val endTime: String,
+    @Json(name = "start_time")
+    @field:Json(name = "start_time")
+    val startTime: String?,
+    @Json(name = "end_time")
+    @field:Json(name = "end_time")
+    val endTime: String?,
     val distance: Double,
     val averageSpeed: Double,
     val imagePath: String?
+
 )
 
 class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -240,7 +255,7 @@ class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // 서버로 ExerciseRecord 객체 전송
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-3-15-195-215.us-east-2.compute.amazonaws.com:3306/")
+            .baseUrl("http://ec2-18-222-163-112.us-east-2.compute.amazonaws.com:3306/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
