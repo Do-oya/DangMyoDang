@@ -1,10 +1,10 @@
 package com.example.dangmyodang
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,7 +22,7 @@ data class ExerciseResponse(
     @SerializedName("exerciseRecords") val exerciseRecords: List<ExerciseRecord>?
 )
 
-class running_hs_Activity : AppCompatActivity() {
+class running_hs_Activity : BaseActivity(TransitionMode.HORIZON) {
 
     private lateinit var textViewRecords: TextView
     private lateinit var exerciseApiService: ExerciseApiService
@@ -35,7 +35,7 @@ class running_hs_Activity : AppCompatActivity() {
 
         // Retrofit 설정
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-18-222-163-112.us-east-2.compute.amazonaws.com:3306/")
+            .baseUrl("http://ec2-18-224-33-245.us-east-2.compute.amazonaws.com:3306/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(
                 OkHttpClient.Builder()
@@ -56,7 +56,7 @@ class running_hs_Activity : AppCompatActivity() {
         val buttonShowRecords: Button = findViewById(R.id.buttonShowRecords)
 
         buttonShowRecords.setOnClickListener {
-            val selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(
+            val selectedDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).format(
                 Date(datePicker.year - 1900, datePicker.month, datePicker.dayOfMonth)
             )
             loadExerciseRecords(userId, selectedDate)
@@ -95,8 +95,7 @@ class running_hs_Activity : AppCompatActivity() {
         if (exerciseRecords != null && exerciseRecords.isNotEmpty()) {
             // 운동 기록이 있을 경우 텍스트뷰에 표시
             val recordsText = exerciseRecords.joinToString("\n\n") {
-                "시작 시간: ${formatTime(it.startTime)}\n" +
-                        "종료 시간: ${formatTime(it.endTime)}\n" +
+                Log.d("ExerciseRecord", "Debug - Start Time: ${it.startTime}, End Time: ${it.endTime}")
                         "이동 거리: ${it.distance} m\n" +
                         "평균 속도: ${it.averageSpeed} m/s"
             }
@@ -108,8 +107,11 @@ class running_hs_Activity : AppCompatActivity() {
         }
     }
 
-    private fun formatTime(time: String?): String {
-        // 시간을 원하는 포맷으로 변환하는 로직 추가
-        return time?.substring(0, 19) ?: ""
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (isFinishing) {
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
+        }
     }
 }

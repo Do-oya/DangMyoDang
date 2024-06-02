@@ -45,52 +45,52 @@ class joinActivity : BaseActivity(TransitionMode.HORIZON) {
         val userIDEditText = findViewById<EditText>(R.id.userID)
         val userNameEditText = findViewById<EditText>(R.id.userName)
         val passwordEditText = findViewById<EditText>(R.id.pw1)
-//        val checkButton = findViewById<Button>(R.id.check)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-18-222-163-112.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
+            .baseUrl("http://ec2-18-224-33-245.us-east-2.compute.amazonaws.com:3306/") // 실제 서버 URL로 변경
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
         val api = retrofit.create(MyApi::class.java)
-//        checkButton.setOnClickListener {
-//            val username = userIDEditText.text.toString()
-//
-//            if (username.isEmpty()) {
-//                // 아이디를 입력하지 않았을 때 메시지 표시
-//                Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
+
+        val checkButton = findViewById<Button>(R.id.check)
+        checkButton.setOnClickListener {
+            val username = userIDEditText.text.toString()
+
+            if (username.isEmpty()) {
+                // 아이디를 입력하지 않았을 때 메시지 표시
+                Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             // 서버에 아이디 중복 체크 요청을 보내고 응답을 처리
-//            val api = retrofit.create(MyApi::class.java)
-//            val usernameData = UsernameData(username)
-//            val call = api.checkUsername(usernameData)
-//
-//            call.enqueue(object : Callback<ApiResponse> {
-//                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-//                    if (response.isSuccessful) {
-//                        val apiResponse = response.body()
-//                        if (apiResponse?.success == true) {
-//                            // 아이디가 사용 가능한 경우
-//                            Toast.makeText(this@joinActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
-//                        } else {
-//                            // 아이디가 이미 사용 중인 경우
-//                            Toast.makeText(this@joinActivity, "이미 사용 중인 아이디입니다.", Toast.LENGTH_SHORT).show()
-//                        }
-//                    } else {
-//                        // 네트워크 오류 메시지 표시
-//                        println("네트워크 오류!")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-//                    // 오류 처리
-//                    Toast.makeText(this@joinActivity, "오류 발생: " + t.message, Toast.LENGTH_SHORT).show()
-//                    println("오류 발생: " + t.message)
-//                }
-//            })
-//        }
+            val usernameData = UsernameData(username)
+            val call = api.checkUsername(usernameData)
+
+            call.enqueue(object : Callback<ApiResponse> {
+                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                    if (response.isSuccessful) {
+                        val apiResponse = response.body()
+                        if (apiResponse?.success == true) {
+                            // 아이디가 사용 가능한 경우
+                            Toast.makeText(this@joinActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            // 아이디가 이미 사용 중인 경우
+                            Toast.makeText(this@joinActivity, "이미 사용 중인 아이디입니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        // 네트워크 오류 메시지 표시
+                        println("네트워크 오류!")
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                    // 오류 처리
+                    Toast.makeText(this@joinActivity, "오류 발생: " + t.message, Toast.LENGTH_SHORT).show()
+                    println("오류 발생: " + t.message)
+                }
+            })
+        }
 
         val join1 = findViewById<Button>(R.id.join1)
         join1.setOnClickListener {
@@ -113,7 +113,6 @@ class joinActivity : BaseActivity(TransitionMode.HORIZON) {
                             val apiResponse = response.body()
                             if (apiResponse?.success == true) {
                                 // 회원가입 성공 메시지 표시
-                                Toast.makeText(this@joinActivity, "회원가입 성공!", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this@joinActivity, LoginActivity::class.java)
                                 startActivity(intent)
                                 println("회원가입 성공!")

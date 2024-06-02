@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/font1"
-        android:text="설정"
+        android:text="반려동물 뉴스"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -32,34 +32,72 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/aaaaaa" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="349dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/bg_gradient"
-        android:fontFamily="@font/font1"
-        android:text="      위치 권한 사용설정"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bal" />
+
+    <Button
+        android:id="@+id/news1"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="184dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="한국반려동물신문"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="349dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="240dp"
+    <Button
+        android:id="@+id/news2"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="324dp"
         android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
         android:fontFamily="@font/font1"
-        android:text="      알림 권한 사용설정"
+        android:paddingEnd="30dp"
+        android:text="한국애견신문"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/news3"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="404dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="반려동물뉴스(CABN)"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"

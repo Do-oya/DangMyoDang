@@ -10,14 +10,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
-import com.squareup.moshi.Json
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -42,19 +40,14 @@ interface ExerciseApiService {
 
 data class ExerciseRecord(
     val userId: Int,
-    @Json(name = "start_time")
-    @field:Json(name = "start_time")
-    val startTime: String?,
-    @Json(name = "end_time")
-    @field:Json(name = "end_time")
-    val endTime: String?,
+    val startTime: String?,  // Nullable
+    val endTime: String?,    // Nullable
     val distance: Double,
     val averageSpeed: Double,
     val imagePath: String?
-
 )
 
-class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
+class RunningActivity : BaseActivity(TransitionMode.HORIZON), OnMapReadyCallback {
 
     private lateinit var locationSource: FusedLocationSource
     private lateinit var naverMap: NaverMap
@@ -222,11 +215,14 @@ class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
         if (checkLocationPermission()) {
             naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
+            // 마지막으로 수신된 위치 가져오기
             val lastLocation = locationSource.lastLocation
-            lastLocation?.let {
-                val latLng = LatLng(it.latitude, it.longitude)
+            if (lastLocation != null) {
+                val latLng = LatLng(lastLocation.latitude, lastLocation.longitude)
                 naverMap.moveCamera(CameraUpdate.scrollTo(latLng))
                 Log.d("MapDebug", "Move camera called")
+            } else {
+                Log.e("MapDebug", "Last location is null")
             }
         }
     }
@@ -253,9 +249,17 @@ class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val exerciseRecord = ExerciseRecord(userId, startTime, endTime, distance, averageSpeed, imagePath)
 
+        // 로깅 추가
+        Log.d("ExerciseRecord", "User ID: $userId")
+        Log.d("ExerciseRecord", "Start Time: $startTime")
+        Log.d("ExerciseRecord", "End Time: $endTime")
+        Log.d("ExerciseRecord", "Distance: $distance")
+        Log.d("ExerciseRecord", "Average Speed: $averageSpeed")
+        Log.d("ExerciseRecord", "Image Path: $imagePath")
+
         // 서버로 ExerciseRecord 객체 전송
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-18-222-163-112.us-east-2.compute.amazonaws.com:3306/")
+            .baseUrl("http://ec2-18-224-33-245.us-east-2.compute.amazonaws.com:3306/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
@@ -281,7 +285,34 @@ class RunningActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun calculateAverageSpeed(): Double {
-        // TODO: 평균 속도 계산 로직 구현
-        return 0.0
+        if (routeCoordinates.size < 2) {
+            // 적어도 두 개의 좌표가 필요함
+            return 0.0
+        }
+
+        // 마지막 두 좌표를 가져옴
+        val lastIndex = routeCoordinates.size - 1
+        val previousLatLng = routeCoordinates[lastIndex - 1]
+        val currentLatLng = routeCoordinates[lastIndex]
+
+        // 거리 계산
+        val distance = calculateDistance(previousLatLng, currentLatLng)
+
+        // 시간 계산 (밀리초 단위)
+        val elapsedTime = System.currentTimeMillis() - startTime
+
+        // 시간과 거리를 이용하여 평균 속도 계산 (m/s)
+        return if (elapsedTime > 0) {
+            distance / (elapsedTime / 1000.0)
+        } else {
+            0.0
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (isFinishing) {
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
+        }
     }
 }

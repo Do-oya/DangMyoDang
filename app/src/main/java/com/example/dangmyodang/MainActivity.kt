@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.dangmyodang.spinnerActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity(TransitionMode.HORIZON) {
@@ -31,6 +30,7 @@ class MainActivity : BaseActivity(TransitionMode.HORIZON) {
         val community = findViewById<ImageButton>(R.id.community)
         val running = findViewById<ImageButton>(R.id.running)
         val care = findViewById<ImageButton>(R.id.care)
+        val bell = findViewById<ImageButton>(R.id.imageButton2)
 
         // BottomNavigationView 초기화
         bottomNavigationView = findViewById(R.id.navigationView)
@@ -50,6 +50,14 @@ class MainActivity : BaseActivity(TransitionMode.HORIZON) {
                         return@setOnNavigationItemSelectedListener false
                     }
                     startActivity(Intent(this, showActivity::class.java))
+                    true
+                }
+                R.id.userFragement -> {
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: care Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, settingActivity::class.java))
                     true
                 }
                 else -> false
@@ -85,6 +93,10 @@ class MainActivity : BaseActivity(TransitionMode.HORIZON) {
         }
         care.setOnClickListener {
             val intent = Intent(this, careActivity::class.java)
+            startActivity(intent)
+        }
+        bell.setOnClickListener {
+            val intent = Intent(this, cal_page_Activity::class.java)
             startActivity(intent)
         }
     }

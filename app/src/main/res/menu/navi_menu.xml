@@ -16,9 +16,9 @@
 
     <item
         android:id="@+id/userFragement"
-        android:title="설정"
+        android:title="뉴스"
         android:fontFamily="@font/font1"
-        android:icon="@drawable/ic_user"/>
+        android:icon="@drawable/ic_news"/>
 
 
 </menu>

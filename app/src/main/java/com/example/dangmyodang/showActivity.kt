@@ -3,6 +3,7 @@ package com.example.dangmyodang
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
@@ -23,13 +24,27 @@ class showActivity : BaseActivity(TransitionMode.HORIZON) {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.homeFragment -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: Home Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
                 R.id.careFragment -> {
-                    val intent = Intent(this, showActivity::class.java)
-                    startActivity(intent)
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: care Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, showActivity::class.java))
+                    true
+                }
+                R.id.userFragement -> {
+                    if (item.isChecked) {
+                        Log.d("NavigationView", "Already checked: care Fragment")
+                        return@setOnNavigationItemSelectedListener false
+                    }
+                    startActivity(Intent(this, settingActivity::class.java))
                     true
                 }
                 else -> false
