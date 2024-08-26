@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".medicActivity">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/font1"
+        android:text="응급처치방법"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/font1"
+        android:text="1. 반려견의 교통사고, 일사병, 골절이나 화상, 급한 호흡의 곤란 등으로 인한 경우 빠르게 대응하여 애견을 사고로부터 구할 수 있다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/font1"
+        android:text="2. 이런 사고를 당한 반려견은 쇼크나 통증으로 사납고 난폭해지므로 인간의 신체에 해가 가지 않게 해야한다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/font1"
+        android:text="3. 특히 물지 못하도록 기본적인 안전장치를 한 다음 애견에 적절한 응급치료나 적당한 방법으로 병원으로 데려간다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="368dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="364dp"
+        android:fontFamily="@font/font1"
+        android:text="7. 쇼크나 통증으로 주인도 물 수 있으므로 항상 주의를 요한다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="460dp"
+        android:fontFamily="@font/font1"
+        android:text="9. 응급처치는 신속하게 정확하게 한다. 긴 타월을 이용해 개의 복부를 타월로 감싸고 목 부분을 묶은 뒤 개를 안아서 운반한다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="369dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="396dp"
+        android:fontFamily="@font/font1"
+        android:text="8. 적당한 보호장치와 같은 조치를 취해 물지 못하도록 방지한다. 또한 응급처치나 운반을 할 때는 장갑이나 수건을 이용하여 개의 몸을 감싸여 이동한다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="508dp"
+        android:fontFamily="@font/font1"
+        android:text="10. 판자나 두꺼운 시트를 들 것 대용으로 이용할 경우, 개를 바닥으로 미끄러지듯이 부드럽게 이동시킨다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="556dp"
+        android:fontFamily="@font/font1"
+        android:text="11.개가 떨어지거나 충격을 받지 않도록 하기 위하여 끈이나 부드러운 천을 이용해 묶어서 고정 시켜준다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="264dp"
+        android:fontFamily="@font/font1"
+        android:text="5. 운반할 때는 개의 신체가 심하게 흔들리거나 또 다른 충격을 받지 않도록 한다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="312dp"
+        android:fontFamily="@font/font1"
+        android:text="6. 흥분하거나 쇼크 상태이기 때문에 침착하게 개에게 말을 걸어 주의를 끌어 안심시키고, 많은 사람들의 접근을 막는다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="216dp"
+        android:fontFamily="@font/font1"
+        android:text="4. 부상당한 장소가 복잡하거나 위험에 노출된 장소이면 곧 바로 안전한 장소로 이동 시킨다."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/me" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,172 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7CCF6E"
+    android:backgroundTint="#F6F0F0"
     tools:context=".treiningActivity">
+
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/font1"
+        android:text="반려견 훈련"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/dog_bing"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="552dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="돌아! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="407dp"
+        android:layout_height="544dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518"
+        app:srcCompat="@drawable/aaaaaa" />
+
+    <Button
+        android:id="@+id/dog_comone"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="392dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="이리와! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dog_tr"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="기다려! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/dog_push"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="312dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="엎드려! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dog_hand"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="손! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bal" />
+
+    <Button
+        android:id="@+id/dog_com"
+        android:layout_width="335dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="472dp"
+        android:background="@drawable/bg_gradient"
+        android:drawableRight="@drawable/checkicon"
+        android:fontFamily="@font/font1"
+        android:paddingEnd="30dp"
+        android:text="가져와! 훈련방법"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigationView"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/menu_click_color"
+        app:itemTextColor="@drawable/menu_click_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navi_menu"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

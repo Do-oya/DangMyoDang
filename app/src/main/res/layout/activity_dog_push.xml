@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#F6F0F0"
+    tools:context=".dog_pushActivity">
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="391dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="432dp"
+        android:fontFamily="@font/font1"
+        android:text="영상의 저작권은 &quot;강형욱의 보듬TV&quot; youtube에 있습니다."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="380dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_gradientt"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:fontFamily="@font/font1"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="반려견 엎드려! 훈련"
+        android:textAlignment="center"
+        android:textColor="#FCF6F5"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965"
+        tools:ignore="RtlCompat" />
+
+
+
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_gradientt"
+        android:fontFamily="@font/font1"
+        android:text="▷"
+        android:textColor="#FCF6F5"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <VideoView
+        android:id="@+id/vvvvvv"
+        android:layout_width="410dp"
+        android:layout_height="239dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225"></VideoView>
+
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_gradientt"
+        android:fontFamily="@font/font1"
+        android:text=" II "
+        android:textColor="#FCF6F5"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="413dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="544dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pool" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="79dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ttr" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="112dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.271"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/tr" />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/menu_click_color"
+        app:itemTextColor="@drawable/menu_click_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navi_menu"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
